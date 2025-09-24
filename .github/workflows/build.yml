@@ -17,20 +17,21 @@ jobs:
       - name: build du code
         run: npm rum build
       - name: Archive du build
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: build-results
           path: dist
 
-  deploy:
-    needs: build-and-test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Téléchargement des résultats de tests
-        uses: actions/download-artifact@v2
-        with:
-          name: test-results
-      - name: Déploiement sur le serveur de production
+  # deploy:
+  #   needs: build-and-test
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Téléchargement des résultats de tests
+  #       uses: actions/download-artifact@v2
+  #       with:
+  #         name: test-results
+  #     - name: Déploiement sur le serveur de production
         run: |
           # Script de déploiement ici
           echo "Déploiement de l'application sur le serveur de production."
+
